@@ -47,6 +47,3 @@ Ensure you have PostgreSQL installed on your system.
 Clone this repository:
 git clone https://github.com/Neghiri/GymDB.git
 
-
-Bash
-git clone https://github.com/your-username/GymDB.git
