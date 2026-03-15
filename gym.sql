@@ -275,3 +275,14 @@ FROM REGISTRO r
 JOIN CORSO c ON r.CodC = c.CodC
 WHERE r.Stato = 'Programmato'
 ORDER BY r.Data ASC, r.Ora ASC;
+
+--INDICI PER OTTIMIZZAZIONE PRESTAZIONI
+CREATE INDEX idx_iscritto_cognome ON ISCRITTO(Cognome);
+CREATE INDEX idx_registro_data ON REGISTRO(Data);
+
+ --SICUREZZA E RUOLI
+CREATE ROLE receptionist LOGIN PASSWORD 'reception2024';
+GRANT SELECT ON v_iscritti_attivi TO receptionist;
+GRANT SELECT ON v_calendario_corsi TO receptionist;
+REVOKE DELETE ON ISCRITTO FROM receptionist;
+REVOKE DELETE ON ABBONAMENTO FROM receptionist;
