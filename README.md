@@ -41,7 +41,5 @@ During the design phase, specific choices were made to ensure the database is ro
 
 ---
 
-## GETTING STARTED
 1. Ensure you have **PostgreSQL** installed on your system.
-2. Clone this repository:
-   git clone https://github.com/Neghiri/GymDB.git
+
