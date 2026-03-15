@@ -41,5 +41,5 @@ During the design phase, specific choices were made to ensure the database is ro
 
 ---
 
-1. Ensure you have **PostgreSQL** installed on your system.
+Ensure you have **PostgreSQL** installed on your system.
 
