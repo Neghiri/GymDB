@@ -250,3 +250,28 @@ INSERT INTO FREQUENTARE (CF, CodReg, OraInizio, OraFine) VALUES
 ('CNTMRA98E41F205B', 'REG003', '18:00:00', '19:00:00'),
 ('PLLSRA00F20L219C', 'REG002', '11:00:00', '12:00:00'),
 ('MRNLCA88G15H501D', 'REG002', '11:00:00', '12:30:00');
+
+--VISTA (ISCRITTI ATTIVI)
+CREATE OR REPLACE VIEW v_iscritti_attivi AS
+SELECT 
+    i.Nome, 
+    i.Cognome, 
+    i.Telefono, 
+    a.Tipologia AS Tipo_Abbonamento, 
+    a.Scad AS Scadenza
+FROM ISCRITTO i
+JOIN ABBONAMENTO a ON i.CF = a.CF_Iscritto
+WHERE a.Scad >= CURRENT_DATE;
+
+--VISTA (CALENDARIO PUBBLICO DEI CORSI)
+CREATE OR REPLACE VIEW v_calendario_corsi AS
+SELECT 
+    r.Data, 
+    r.Ora, 
+    c.Nome AS Nome_Corso, 
+    c.Sala AS Nome_Sala, 
+    r.Stato
+FROM REGISTRO r
+JOIN CORSO c ON r.CodC = c.CodC
+WHERE r.Stato = 'Programmato'
+ORDER BY r.Data ASC, r.Ora ASC;
